@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    desc: Ini latihan kubernetes
+  labels:
+    env: dev
+  name: pod-env-dua
+  namespace: dev
+spec:
+  containers:
+  - envFrom:
+      - secretRef:
+          name: app-secret
+    image: nginx
+    name: pod-env-dua

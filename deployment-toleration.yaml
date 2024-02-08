@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: toleration-test
+  name: deployment-toleration
+  namespace: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: toleration-test
+  template:
+    metadata:
+      labels:
+        app: toleration-test
+    spec:
+      containers:
+      - image: deni02/myapp:v1.0
+        name: myapp
+        ports:
+        - containerPort: 80
+      tolerations:
+      - key: "node"
+        operator: "Equal"
+        value: "worker"
+        effect: "NoSchedule"

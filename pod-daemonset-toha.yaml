@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    desc: Ini belajar daemonset kubernetes
+  labels:
+    env: development
+  name: pod-daemonset-toha
+  namespace: development
+spec:
+  selector:
+    matchLabels:
+      env: development
+  template:
+    metadata:
+      labels:
+        env: development
+    spec:
+      containers:
+        - image: nginx
+          name: pod-daemonset-toha
+          ports:
+          - containerPort: 80

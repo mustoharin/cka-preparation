@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-required-affinity
+  namespace: prod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: required-affinity-test
+  template:
+    metadata:
+      labels:
+        type: required-affinity-test
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: disk
+                operator: In
+                values:
+                - ssd
+      containers:
+      - name: ct-required-affinity
+        image: nginx
+        ports:
+        - containerPort: 80

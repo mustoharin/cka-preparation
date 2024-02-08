@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    description: ini pod belajar kubernetes
+  labels:
+    env: development
+  name: pod-toha
+  namespace: development
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: development
+  template:
+    metadata:
+      labels:
+        env: development
+    spec:
+      containers:
+      - image: nginx
+        name: pod-toha

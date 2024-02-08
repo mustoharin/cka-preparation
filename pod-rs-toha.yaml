@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-rs-toha
+  labels:
+    env: dev
+  namespace: dev
+spec:
+  containers:
+  - image: nginx
+    name: pod-rs-toha
+    resources: 
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "120m"
+        memory: "150Mi"

@@ -1,0 +1,8 @@
+apiVersion: v1
+data:
+  HOST: 1.1.1.1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: cm-pod-example2
+  namespace: prod

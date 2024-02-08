@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-app-hpa
+  name: my-app-hpa
+  namespace: prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app-hpa
+  template:
+    metadata:
+      labels:
+        app: my-app-hpa
+    spec:
+      containers:
+      - image: deni02/myapp:v1.0
+        name: myapp
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m" 
+          limits:
+            memory: "150Mi"
+            cpu: "120m"
+        ports:
+        - containerPort: 80 

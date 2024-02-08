@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    desc: Ini latihan kubernetes
+  labels:
+    env: dev
+  name: pod-env-toha
+  namespace: dev
+spec:
+  containers:
+  - env:
+    - name: HOST_DB
+      value: "172.23.5.100"
+    - name: USER_DB
+      value: "user_wp"
+    - name: PASSWORD_DB
+      value: "pass_wp"
+    - name: HOST
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: HOST
+    - name: PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: PASSWORD
+    - name: USER
+      valueFrom:
+        secretKeyRef:
+          name: app-secret
+          key: USER
+    image: nginx
+    name: pod-env-toha
