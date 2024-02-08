@@ -6,7 +6,6 @@ metadata:
   name: pod-nodename
   namespace: prod
 spec:
-  # nodeName: kube-worker-02
   containers:
   - image: nginx
     name: pod-nodename

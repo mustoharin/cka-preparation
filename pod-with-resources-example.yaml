@@ -1,0 +1,22 @@
+# kubectl run pod-sample --annotations="desc=Learn running pod kubernetes" \
+# --image=nginx -n dev -l env=dev --dry-run=client -o yaml > pod-sample.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    description: Learn running pod kubernetes
+  name: pod-sample
+  labels:
+    env: dev
+  namespace: dev
+spec:
+  containers:
+  - image: nginx
+    name: pod-sample
+    resources: 
+      requests:
+        cpu: "100m"
+        memory: "128Mi"
+      limits:
+        cpu: "120m"
+        memory: "150Mi"

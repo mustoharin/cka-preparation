@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   annotations:
-    description: ini pod belajar kubernetes
+    description: Learn running ReplicaSet kubernetes
   labels:
-    env: development
-  name: pod-toha
-  namespace: development
+    env: dev
+  name: rs-sample
+  namespace: dev
 spec:
   replicas: 3
   selector:
     matchLabels:
-      env: development
+      env: dev
   template:
     metadata:
       labels:
-        env: development
+        env: dev
     spec:
       containers:
       - image: nginx
-        name: pod-toha
+        name: rs-sample

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    desc: Learn running DaemonSet kubernetes
+  labels:
+    env: dev
+  name: daemonset-sample
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      env: dev
+  template:
+    metadata:
+      labels:
+        env: dev
+    spec:
+      containers:
+        - image: nginx
+          name: daemonset-sample
+          ports:
+          - containerPort: 80

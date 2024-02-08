@@ -1,0 +1,18 @@
+# kubectl run pod-static --annotations="desc=Learn running static pod kubernetes" \
+# --image=nginx -n dev -l env=dev --dry-run=client -o yaml > pod-static.yaml
+#
+# Put file in worker manifests folder
+#
+# scp pod-static.yaml root@172.23.5.12:/etc/kubernetes/manifests/pod-static.yaml 
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    description: Learn running static pod kubernetes
+  labels:
+    env: dev
+  name: pod-static
+spec:
+  containers:
+  - image: nginx
+    name: pod-static
